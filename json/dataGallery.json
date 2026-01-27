@@ -1,0 +1,49 @@
+{
+  "gallery": [
+    {
+      "image": "./img/gallery/imagen1.jpg",
+      "title": "Vestido Primavera",
+      "description": "Talla S-M-L · Color rosa"
+    },
+    {
+      "image": "./img/gallery/imagen2.jpg",
+      "title": "Blusa Elegante",
+      "description": "Talla única · Color blanco"
+    },
+    {
+      "image": "./img/gallery/imagen3.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    },
+    {
+      "image": "./img/gallery/imagen4.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    },
+    {
+      "image": "./img/gallery/imagen5.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    },
+    {
+      "image": "./img/gallery/imagen6.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    },
+    {
+      "image": "./img/gallery/imagen7.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    },
+    {
+      "image": "./img/gallery/imagen8.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    },
+    {
+      "image": "./img/gallery/imagen9.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>D'Evy</title>
+</head>
+    <body>
+        <section class="principal">
+            <section class="header">
+                <div class="title">
+                    <h1>Boutique D'Evy</h1>
+                    <p>El placer de saber vestir bien!</p>
+                </div>
+            </section>
+            
+            <section class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <!-- Se llena dinámicamente desde JSON -->
+                </div>
+                
+                <div class="toggle-container" id="toggles">
+                    <!-- Se llena dinámicamente desde JSON -->
+                </div>
+            </section>
+
+            <section class="aboutUs-container">
+                <div class="aboutUs-content">
+                    <h2 class="title-aboutUs">¿Quiénes somos?</h2>
+                    <p class="p-aboutUs">En Boutique D'Evy, nos dedicamos a ofrecer productos de alta calidad que combinan estilo y funcionalidad. Nuestra misión es ayudarte a encontrar la ropa perfecta que refleje tu personalidad y estilo único.</p>
+                </div>
+            </section>
+
+            <section class="galery-container">
+                <h2 class="title-galery">Galería de Productos</h2>
+                <div class="galeryCarousel">
+                    <!-- Se llena dinámicamente desde JSON -->
+                </div>
+            </section>
+
+            <section class="secondary">
+                <h1>Contáctanos</h1>
+                <div class="contacto">
+                    <form id="contactoForm">                        
+                        <input type="text" id="name" class="name" placeholder="Nombre" required>
+                        <input type="text" id="lastname" class="lastname" placeholder="Apellido" required>
+                        <input type="email" id="email" class="email" placeholder="Email" required>
+                        <input type="tel" id="phone" class="phone" placeholder="Teléfono" required>
+                        <button type="submit">Consultar</button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>                
+            </section>
+
+            <section class="footer-container">
+                <div class="footer">
+                    <p>© 2024 Boutique D'Evy. Todos los derechos reservados.</p>
+                </div>
+            </section>
+        </section>
+
+        
+    
+
+        <script src="script.js"></script>
+
+    </body>
+</html>

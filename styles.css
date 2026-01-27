@@ -1,0 +1,748 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  /* background: linear-gradient(135deg, #ff1493 0%, #ff006e 40%, #8338ec 100%); */
+  /* background: linear-gradient(135deg, #ff006e 0%, #ff1493 50%, #ff85a1 100%);  */
+  /* background: linear-gradient(135deg, #ff006e 0%, #ff1493 50%, #fb5607 100%); */
+  /* background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #db7093 100%); */
+  /* background: linear-gradient(135deg, #f783ac 0%, #f06292 50%, #e64980 100%); */
+  background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 50%, #f48fb1 100%);
+  /* background: linear-gradient(135deg, #da70d6 0%, #ff69b4 50%, #ba55d3 100%); */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* overflow: hidden; */
+  overflow: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+:root {
+  --card-width: 300px;
+  --card-height: 520px;
+  --img-height: 380px;
+  /* Radio del cilindro - ajusta según el ancho de las tarjetas */
+  --cylinder-radius: 500px;
+}
+
+.principal {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+/* Header con título - DEBE ESTAR POR ENCIMA */
+.header {
+  position: relative;
+  z-index: 1000; /* Muy alto para estar por encima del carrusel 3D */
+  text-align: center;
+  margin-bottom: 100px;
+  pointer-events: none; /* Permite clicks pasar al carrusel si es necesario */
+}
+
+.title {
+  pointer-events: auto; /* Reactiva clicks en el título */
+}
+
+.title h1 {
+  font-size: 3.5rem;
+  /* color: #ffd1dc; */
+  /* color: #f8c3cd; */
+  color: #ffffff;
+  text-shadow:  0 2px 10px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(255, 255, 255, 0.6),
+                0 0 100px rgba(255, 20, 147, 0.8);
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.title p {
+  font-size: 1.4rem;
+  /* color: #f4e4c1;  */
+  color: #faf0e6; 
+  /* color: #ffcce0; */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 4px;
+  /* text-transform: uppercase; */
+}
+
+
+/* Contenedor principal con perspectiva 3D */
+.carousel-container {
+  perspective: 1200px;
+  z-index: 1;
+  width: var(--card-width);
+  height: var(--card-height);
+  position: relative;
+  margin: 5rem auto 4rem;
+}
+
+/* El carrusel que rota - actúa como el cilindro */
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Cada card individual - pegada al cilindro */
+.carousel-card {
+  position: absolute;
+  width: var(--card-width);
+  height: var(--card-height);
+  left: 0;
+  top: 0;
+
+  /* Efecto vidrio catedral */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  overflow: hidden;
+  /* Permite ver las tarjetas traseras con opacidad reducida */
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+}
+
+/* Posiciones 3D - Tarjetas distribuidas en el cilindro */
+/* Cada tarjeta se rota Y LUEGO se traslada en Z */
+.carousel-card:nth-child(1) {
+  transform: rotateY(0deg) translateZ(var(--cylinder-radius));
+}
+.carousel-card:nth-child(2) {
+  transform: rotateY(90deg) translateZ(var(--cylinder-radius));
+}
+.carousel-card:nth-child(3) {
+  transform: rotateY(180deg) translateZ(var(--cylinder-radius));
+}
+.carousel-card:nth-child(4) {
+  transform: rotateY(270deg) translateZ(var(--cylinder-radius));
+}
+
+/* Wrapper para la imagen */
+.card-image {
+  width: 100%;
+  height: var(--img-height);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Contenido de la card */
+.carousel-card .card-content {
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.carousel-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-card p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+/* Toggle/Indicadores */
+.toggle-container {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.toggle-btn {
+  width: 40px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.toggle-btn.active {
+  background: rgba(255, 255, 255, 0.95);
+  width: 60px;
+}
+
+/* Efecto hover en las cards */
+.carousel-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 12px 40px 0 rgba(31, 38, 135, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   SECCIÓN "¿QUIÉNES SOMOS?"
+   ========================================== */
+.aboutUs-container {
+  width: 100%;
+  /* max-width: 800px; */
+  /* margin: 80px auto; */
+  padding: 0 20px;
+  text-align: center;
+  z-index: 2;
+  margin-top: 10rem;  
+}
+
+.title-aboutUs {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.p-aboutUs {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  color: #ffcce0;
+  line-height: 1.6;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   CARRUSEL INFINITO (LLENA 5 SIEMPRE)
+   ========================================== */
+
+.galery-container {
+  width: 100%;
+  max-width: 1550px;
+  margin-top: 5rem;
+  padding: 20px;
+}
+
+   
+.title-galery {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.galeryCarousel {
+  position: relative;
+  width: 100%;
+  max-width: 1550px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  height: 380px;
+}
+
+.galery-track {
+  display: flex;
+  transition: transform .5s ease;
+}
+
+.galery-card {
+  min-width: 20%;                  /* 20% ≈ 5 imágenes visibles */
+  cursor: zoom-in;
+  position: relative;
+  padding: 10px 8px;                  /* pequeño espacio entre cards */
+  box-sizing: border-box;
+}
+
+.galery-card img {
+  width: 100%;
+  height: 300px;                   /* altura fija proporcional */
+  object-fit: cover;               /* cubre sin deformar */
+  border-radius: 12px;
+}
+
+.description-content {
+  padding: 12px 6px 0;
+  text-align: center;
+}
+
+.description-content h3{
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  font-family: 'Playfair Display', serif;
+}
+
+.description-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #ffcce0;
+}
+
+/* ==========================================
+   MODAL AMPLIADO (imagen completa)
+   ========================================== */
+.modal-galery {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: zoom-out;
+  padding: 20px;
+}
+
+.modal-content {
+  position: relative;
+  max-width: calc(33vw - 40px);
+  max-height: calc(33vh - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border-radius: 20px; 
+  box-shadow: 0 12px 40px rgba(0,0,0,.4); 
+}
+
+.modal-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;  
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: rgba(255,255,255,.2);
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s;
+  z-index: 10000;
+}
+
+.close-modal:hover {
+  background: rgba(255,255,255,.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   SECCIÓN SECUNDARIA (formulario + footer)
+   ========================================== */
+
+.secondary {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto 40px;
+  /* padding: 0 20px; */
+  text-align: center;
+  z-index: 2;
+  /* margin-top: 10rem; */
+}
+
+.secondary h1 {
+  font-family: 'Montserrat', italic;
+  font-size: 2rem;
+  /* color: #ffd1dc; */
+  /* color: #f8c3cd; */
+  color: #ffffff;
+  text-shadow:  0 2px 10px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(255, 255, 255, 0.6),
+                0 0 100px rgba(255, 20, 147, 0.8);
+  margin-bottom: 15px;
+  font-weight: 300;  
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;  
+}
+
+/* Formulario de contacto */
+.contacto {
+  margin-bottom: 60px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px); /* mismo que las cards */
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.4); /* mismo borde que las cards */
+  border-radius: 20px; /* mismo radio que las cards */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* misma sombra que las cards */
+}
+
+#contactoForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 560px; 
+  margin: 0 auto; 
+}
+
+/* Campos que ocupan todo el ancho */
+/* #contactoForm textarea[name="consulta"] { */
+#contactoForm input[name="email"] {
+  grid-column: 1 / -1;
+}
+
+/* Estilo general de inputs y textarea */
+/* #contactoForm textarea, */
+#contactoForm input,
+#contactoForm button {
+  width: 100%;
+  padding: 14px 20px;
+  font-family: 'Lato', sans-serif; /* misma fuente que el párrafo del título */
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15); /* misma transparencia que las cards */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* mismo borde que las cards */
+  border-radius: 12px; /* ligeramente más redondeado que las cards (20px → 12px) */
+  color: #ffffff; /* mismo color de texto que las cards */
+  outline: none;
+  transition: all 0.3s ease;
+  justify-self: center;
+  
+}
+
+/* Placeholder con la misma opacidad que el párrafo del título */
+/* #contactoForm textarea::placeholder { */
+#contactoForm input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus con el mismo efecto que el hover de las cards */
+/* #contactoForm textarea:focus { */
+#contactoForm input:focus {
+  background: rgba(255, 255, 255, 0.25); /* mismo que hover de cards */
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Campo de consulta */
+/* #contactoForm textarea[name="consulta"] {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.4;
+} */
+
+/* Botón de enviar */
+#contactoForm button {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.15); /* mismo fondo que las cards */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* mismo borde que las cards */
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover del botón con el mismo efecto que hover de las cards */
+#contactoForm button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25); /* mismo que hover de cards */
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+#contactoForm button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mensaje de estado */
+.form-status {
+  grid-column: 1 / -1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  display: none;
+}
+
+.form-status.success {
+  background: rgba(46, 204, 113, 0.2);
+  border: 1px solid rgba(46, 204, 113, 0.5);
+  color: #fff;
+}
+
+.form-status.error {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid rgba(231, 76, 60, 0.5);
+  color: #fff;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .contacto {
+    padding: 25px 20px;
+    margin: 40px 15px;
+  }
+
+  #contactoForm {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer-container {
+  width: 100%;
+  text-align: center;  
+}
+
+.footer {
+  padding: 30px 20px;
+  background: rgba(0, 0, 0, 0.15); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); 
+  border-radius: 15px 15px 0 0;  
+  width: 100%;
+}
+
+.footer p {
+  font-family: 'Lato', sans-serif; 
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8); 
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   RESPONSIVE - TABLETS (768px - 1024px)
+   ========================================== */
+/* @media screen and (max-width: 1024px) {
+  :root {
+    --card-width: 240px;
+    --card-height: 340px;
+    --img-height: 200px;
+    --cylinder-radius: 250px;
+  }
+  
+  .carousel-container {
+    perspective: 1000px;
+  }
+  
+  .carousel-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .carousel-card p {
+    font-size: 0.85rem;
+  }
+  
+  .toggle-container {
+    bottom: -100px;
+  }
+} */
+
+/* ==========================================
+   RESPONSIVE - MÓVILES GRANDES (480px - 767px)
+   ========================================== */
+/* @media screen and (max-width: 767px) {
+  :root {
+    --card-width: 200px;
+    --card-height: 300px;
+    --img-height: 170px;
+    --cylinder-radius: 200px;
+  }
+  
+  .carousel-container {
+    perspective: 800px;
+  }
+  
+  .carousel-card .card-content {
+    padding: 15px;
+  }
+  
+  .carousel-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+  
+  .carousel-card p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  
+  .toggle-container {
+    bottom: -80px;
+    gap: 8px;
+  }
+  
+  .toggle-btn {
+    width: 30px;
+    height: 5px;
+  }
+  
+  .toggle-btn.active {
+    width: 45px;
+  }
+} */
+
+/* ==========================================
+   RESPONSIVE - MÓVILES PEQUEÑOS (< 480px)
+   ========================================== */
+/* @media screen and (max-width: 479px) {
+  :root {
+    --card-width: 160px;
+    --card-height: 260px;
+    --img-height: 140px;
+    --cylinder-radius: 160px;
+  }
+  
+  .carousel-container {
+    perspective: 600px;
+  }
+  
+  .carousel-card {
+    border-radius: 15px;
+  }
+  
+  .carousel-card .card-content {
+    padding: 12px;
+  }
+  
+  .carousel-card h3 {
+    font-size: 1rem;
+  }
+  
+  .carousel-card p {
+    font-size: 0.75rem;
+  }
+  
+  .toggle-container {
+    bottom: -60px;
+    gap: 6px;
+  }
+  
+  .toggle-btn {
+    width: 25px;
+    height: 4px;
+  }
+  
+  .toggle-btn.active {
+    width: 35px;
+  }
+} */
+
+/* ==========================================
+   RESPONSIVE - PANTALLAS MUY GRANDES (> 1400px)
+   ========================================== */
+/* @media screen and (min-width: 1400px) {
+  :root {
+    --card-width: 320px;
+    --card-height: 460px;
+    --img-height: 290px;
+    --cylinder-radius: 350px;
+  }
+  
+  .carousel-container {
+    perspective: 1400px;
+  }
+  
+  .carousel-card h3 {
+    font-size: 1.6rem;
+  }
+  
+  .carousel-card p {
+    font-size: 1rem;
+  }
+  
+  .toggle-container {
+    bottom: -180px;
+  }
+} */

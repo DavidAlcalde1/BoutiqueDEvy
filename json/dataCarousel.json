@@ -1,0 +1,24 @@
+{
+  "cards": [
+    {
+      "image": "./img/image1.png",
+      "title": "Pantalones",
+      "description": "Corte, comodidad y estilo. Descubre nuestra colección de pantalones que se adaptan a tu silueta y a tu ritmo."
+    },
+    {
+      "image": "./img/image2.png",
+      "title": "Blusas",
+      "description": "Diseños únicos con detalles en tejido y corte. La pieza ideal para elevar cualquier look con feminidad y distinción."
+    },
+    {
+      "image": "./img/image3.png",
+      "title": "Vestidos",
+      "description": "Tu aliado infalible. Desde modelos casuales para el día hasta elegantes diseños para esa salida especial que merece un toque de glamour."
+    },
+    {
+      "image": "./img/image4.png",
+      "title": "Outerwear: Casacas y Abrigos",
+      "description": "La capa final perfecta. Desde ligeras casacas para el viento hasta abrigos acogedores, completa tu outfit con sofisticación."
+    }
+  ]
+}
