@@ -367,7 +367,7 @@ contactoForm.addEventListener('submit', async (e) => {
         });
         
         // 2. Abrir WhatsApp con mensaje predeterminado
-        const texto = `Hola, me llamo ${nombre} ${apellido} y deseo consultar acerca de los modelos disponibles.`;
+        const texto = `Hola, me llamo ${nombre} ${apellido} y deseo consultar acerca del producto de código: ${code}.`;
         const numeroWhatsApp = '946559236'; 
         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
         
