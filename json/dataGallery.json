@@ -3,47 +3,105 @@
     {
       "image": "./img/gallery/imagen1.jpg",
       "title": "Vestido Primavera",
-      "description": "Talla S-M-L · Color rosa"
+      "description": "Talla S-M-L · Color rosa",
+      "code": "V0001-E-26"
     },
     {
       "image": "./img/gallery/imagen2.jpg",
       "title": "Blusa Elegante",
-      "description": "Talla única · Color blanco"
+      "description": "Talla única · Color blanco",
+      "code": "B0001-E-26"
     },
+    
     {
       "image": "./img/gallery/imagen3.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0001-E-26"
     },
     {
       "image": "./img/gallery/imagen4.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0002-E-26"
     },
     {
       "image": "./img/gallery/imagen5.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0003-E-26"
     },
     {
       "image": "./img/gallery/imagen6.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0004-E-26"
     },
     {
       "image": "./img/gallery/imagen7.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0005-E-26"
     },
     {
       "image": "./img/gallery/imagen8.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0006-E-26"
     },
     {
       "image": "./img/gallery/imagen9.jpg",
       "title": "Pantalón Skinny",
-      "description": "Talla 26-32 · Color negro"
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0007-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen5.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0008-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen6.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0009-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen7.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0010-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen8.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0011-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen9.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0012-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen7.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code": "P0013-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen8.jpg",
+      "title": "Pantalón Skinny",
+      "description": "Talla 26-32 · Color negro",
+      "code" : "P0014-E-26"
+    },
+    {
+      "image": "./img/gallery/imagen9.jpg",
+      "title": "casaca",
+      "description": "Talla S-M · Color negro, camello",
+      "code": "C0001-E-26"
     }
   ]
 }

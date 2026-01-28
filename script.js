@@ -241,8 +241,88 @@ loadGallery();
 // ==========================================
 
 // Carga EmailJS
+// const script = document.createElement('script');
+// script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+// document.head.appendChild(script);
+
+// script.onload = function() {
+//     emailjs.init('BPO47zmBDVPb_Or7N');
+// };
+
+// const contactoForm = document.getElementById('contactoForm');
+// const formStatus = document.getElementById('formStatus');
+
+// contactoForm.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+    
+//     const btn = contactoForm.querySelector('button');
+//     btn.disabled = true;
+//     btn.textContent = 'Enviando...';
+    
+//     Datos del formulario
+//     const nombre   = document.getElementById('name').value.trim();
+//     const apellido = document.getElementById('lastname').value.trim();
+//     const email    = document.getElementById('email').value.trim();
+//     const telefono = document.getElementById('phone').value.trim();
+    
+//     1. Enviar email (EmailJS)
+//     try {
+//         await emailjs.send('service_o2x4wri', 'template_wddixmm', {
+//             name: nombre,
+//             lastname: apellido,
+//             email: email,
+//             phone: telefono
+//         });
+        
+//         2. Abrir WhatsApp con mensaje predeterminado
+//         const texto = `Hola, me llamo ${nombre} ${apellido} y deseo consultar acerca de los modelos disponibles.`;
+//         const numeroWhatsApp = '946559236'; 
+//         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+        
+//         window.open(urlWhatsApp, '_blank');
+        
+//         showStatus('Mensaje enviado y WhatsApp abierto.', 'success');
+//         contactoForm.reset();
+        
+//     } catch (error) {
+//         showStatus('Error al enviar. Intenta nuevamente.', 'error');
+//     } finally {
+//         btn.disabled = false;
+//         btn.textContent = 'Consultar';
+//     }
+// });
+
+// function showStatus(message, type) {
+//     formStatus.textContent = message;
+//     formStatus.className = `form-status ${type}`;
+//     formStatus.style.display = 'block';
+//     setTimeout(() => formStatus.style.display = 'none', 5000);
+// }
+
+
+
+function validarTelefono(telefono) {
+    // Elimina espacios y guiones
+    const limpio = telefono.replace(/[\s-]/g, '');
+    
+    // Validación para Perú: 
+    // - 9 dígitos (empieza con 9)
+    // - O con código de país: +519XXXXXXXX
+    const regexPeru = /^(9\d{8}|\+519\d{8})$/;
+    
+    return regexPeru.test(limpio);
+}
+
+
+
+
+// ==========================================
+// FORMULARIO DE CONTACTO (EMAILJS + WHATSAPP + CÓDIGOS DE PRODUCTO)
+// ==========================================
+
+// Carga EmailJS
 const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js  ';
 document.head.appendChild(script);
 
 script.onload = function() {
@@ -264,6 +344,17 @@ contactoForm.addEventListener('submit', async (e) => {
     const apellido = document.getElementById('lastname').value.trim();
     const email    = document.getElementById('email').value.trim();
     const telefono = document.getElementById('phone').value.trim();
+    const code     = document.getElementById('code').value.trim();
+    
+    // Validación personalizada de teléfono
+    if (!validarTelefono(telefono)) {
+      showStatus('Por favor, ingresa un número válido (9 dígitos para Perú o con código de país).', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Consultar';
+      return;
+    }
+
+
     
     // 1. Enviar email (EmailJS)
     try {
@@ -271,7 +362,8 @@ contactoForm.addEventListener('submit', async (e) => {
             name: nombre,
             lastname: apellido,
             email: email,
-            phone: telefono
+            phone: telefono,
+            code: code
         });
         
         // 2. Abrir WhatsApp con mensaje predeterminado
@@ -298,8 +390,6 @@ function showStatus(message, type) {
     formStatus.style.display = 'block';
     setTimeout(() => formStatus.style.display = 'none', 5000);
 }
-
-
 
 
 
