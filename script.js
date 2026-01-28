@@ -154,8 +154,8 @@ function buildInfiniteCarousel() {
         <div class="galery-card" data-src="${item.image}" style="width:${cardWidth}%;">
           <img src="${item.image}" alt="${item.title}">
           <div class="description-content">
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
+            <h3>${item.title}</h3>          
+            <p>${item.code}</p>
           </div>
         </div>
       `).join('')}
