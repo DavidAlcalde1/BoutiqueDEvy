@@ -308,7 +308,7 @@ function validarTelefono(telefono) {
     // Validación para Perú: 
     // - 9 dígitos (empieza con 9)
     // - O con código de país: +519XXXXXXXX
-    const regexPeru = /^(9\d{8}|\+519\d{8})$/;
+    const regexPeru = /^(9\d{8}|(\+?51)?9\d{8})$/;
     
     return regexPeru.test(limpio);
 }
